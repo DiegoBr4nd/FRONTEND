@@ -9,7 +9,7 @@ const CONF_ORDER = ['CONMEBOL', 'UEFA', 'CONCACAF', 'AFC', 'CAF', 'OFC'];
 
 export default function App() {
   const [home, setHome] = useState('Portugal');
-  const [away, setAway] = useState('R.D. del Congo');
+  const [away, setAway] = useState('RD Congo');
   const [neutral, setNeutral] = useState(true);
   const [model, setModel] = useState('ensemble');
   const [data, setData] = useState(null);

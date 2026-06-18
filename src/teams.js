@@ -1,5 +1,5 @@
-// teams.js — Equipos clasificados al Mundial 2026
-// Mapeo: nombre en español (UI) -> nombre en inglés (API, dataset martj42) + abreviatura de 3 letras
+// teams.js — Las 48 selecciones del Mundial 2026
+// Mapeo: nombre en español (UI) -> nombre en inglés (API, dataset martj42) + abreviatura
 // Agrupados por confederación para el selector.
 
 export const TEAMS = [
@@ -15,6 +15,8 @@ export const TEAMS = [
   { es: 'Alemania', en: 'Germany', abbr: 'GER', conf: 'UEFA' },
   { es: 'Austria', en: 'Austria', abbr: 'AUT', conf: 'UEFA' },
   { es: 'Bélgica', en: 'Belgium', abbr: 'BEL', conf: 'UEFA' },
+  { es: 'Bosnia y Herzegovina', en: 'Bosnia and Herzegovina', abbr: 'BIH', conf: 'UEFA' },
+  { es: 'Chequia', en: 'Czech Republic', abbr: 'CZE', conf: 'UEFA' },
   { es: 'Croacia', en: 'Croatia', abbr: 'CRO', conf: 'UEFA' },
   { es: 'Escocia', en: 'Scotland', abbr: 'SCO', conf: 'UEFA' },
   { es: 'España', en: 'Spain', abbr: 'ESP', conf: 'UEFA' },
@@ -25,7 +27,7 @@ export const TEAMS = [
   { es: 'Portugal', en: 'Portugal', abbr: 'POR', conf: 'UEFA' },
   { es: 'Suecia', en: 'Sweden', abbr: 'SWE', conf: 'UEFA' },
   { es: 'Suiza', en: 'Switzerland', abbr: 'SUI', conf: 'UEFA' },
-  { es: 'Türkiye', en: 'Turkey', abbr: 'TUR', conf: 'UEFA' },
+  { es: 'Turquía', en: 'Turkey', abbr: 'TUR', conf: 'UEFA' },
 
   // CONCACAF
   { es: 'Canadá', en: 'Canada', abbr: 'CAN', conf: 'CONCACAF', host: true },
@@ -33,12 +35,12 @@ export const TEAMS = [
   { es: 'México', en: 'Mexico', abbr: 'MEX', conf: 'CONCACAF', host: true },
   { es: 'Curazao', en: 'Curaçao', abbr: 'CUW', conf: 'CONCACAF' },
   { es: 'Haití', en: 'Haiti', abbr: 'HAI', conf: 'CONCACAF' },
+  { es: 'Panamá', en: 'Panama', abbr: 'PAN', conf: 'CONCACAF' },
 
   // AFC
-  { es: 'Arabia Saudí', en: 'Saudi Arabia', abbr: 'KSA', conf: 'AFC' },
+  { es: 'Arabia Saudita', en: 'Saudi Arabia', abbr: 'KSA', conf: 'AFC' },
   { es: 'Australia', en: 'Australia', abbr: 'AUS', conf: 'AFC' },
   { es: 'Corea del Sur', en: 'South Korea', abbr: 'KOR', conf: 'AFC' },
-  { es: 'Emiratos Árabes Unidos', en: 'United Arab Emirates', abbr: 'UAE', conf: 'AFC' },
   { es: 'Irán', en: 'Iran', abbr: 'IRN', conf: 'AFC' },
   { es: 'Irak', en: 'Iraq', abbr: 'IRQ', conf: 'AFC' },
   { es: 'Japón', en: 'Japan', abbr: 'JPN', conf: 'AFC' },
@@ -53,7 +55,7 @@ export const TEAMS = [
   { es: 'Egipto', en: 'Egypt', abbr: 'EGY', conf: 'CAF' },
   { es: 'Ghana', en: 'Ghana', abbr: 'GHA', conf: 'CAF' },
   { es: 'Marruecos', en: 'Morocco', abbr: 'MAR', conf: 'CAF' },
-  { es: 'R.D. del Congo', en: 'DR Congo', abbr: 'COD', conf: 'CAF' },
+  { es: 'RD Congo', en: 'DR Congo', abbr: 'COD', conf: 'CAF' },
   { es: 'Senegal', en: 'Senegal', abbr: 'SEN', conf: 'CAF' },
   { es: 'Sudáfrica', en: 'South Africa', abbr: 'RSA', conf: 'CAF' },
   { es: 'Túnez', en: 'Tunisia', abbr: 'TUN', conf: 'CAF' },
@@ -62,7 +64,6 @@ export const TEAMS = [
   { es: 'Nueva Zelanda', en: 'New Zealand', abbr: 'NZL', conf: 'OFC' },
 ];
 
-// Búsquedas rápidas
 export const EN_BY_ES = Object.fromEntries(TEAMS.map(t => [t.es, t.en]));
 export const ABBR_BY_ES = Object.fromEntries(TEAMS.map(t => [t.es, t.abbr]));
 export const TEAM_BY_ES = Object.fromEntries(TEAMS.map(t => [t.es, t]));

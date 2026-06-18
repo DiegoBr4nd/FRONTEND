@@ -66,4 +66,3 @@ src/
 ├── dashboard.css    # layout y componentes
 └── main.jsx         # entrada
 ```
-# FRONTEND
