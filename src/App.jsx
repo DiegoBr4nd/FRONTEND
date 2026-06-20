@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { TEAMS, EN_BY_ES, ABBR_BY_ES } from './teams';
+import { analyzeMatch } from './verdict';
 import './dashboard.css';
 
 // URL de tu backend en Render
@@ -52,6 +53,12 @@ export default function App() {
 
   const p1x2 = m?.result_1x2;
   const pct = (x) => (x * 100).toFixed(1);
+
+  // Veredicto interpretable (claridad para decidir)
+  const verdict = useMemo(
+    () => (m ? analyzeMatch(m, home, away) : null),
+    [m, home, away]
+  );
 
   // Anchos de barra para el header 1X2
   const barW = p1x2 ? {
@@ -151,6 +158,32 @@ export default function App() {
             )}
           </div>
         </section>
+
+        {/* ===== Veredicto / claridad para decidir ===== */}
+        {verdict && (
+          <section className={`verdict glass glow-hover conf-${verdict.confidence}`}>
+            <div className="verdict-main">
+              <div className="verdict-head">
+                <span className={`conf-badge c-${verdict.confColor}`}>
+                  <span className="conf-dot" /> Confianza {verdict.confidence}
+                </span>
+                <span className="label-md c-variant">Lectura del modelo</span>
+              </div>
+              <p className="verdict-headline">{verdict.headline}</p>
+              <ul className="verdict-notes">
+                {verdict.notes.map((n, i) => (
+                  <li key={i} className="body-md c-variant">{n}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="verdict-bet">
+              <div className="label-md c-variant">Dato más sólido</div>
+              <div className="bet-label">{verdict.bestBet.label}</div>
+              <div className="bet-prob data-mono c-secondary">{pct(verdict.bestBet.prob)}%</div>
+              <div className="bet-reason body-md c-variant">{verdict.bestBet.reason}</div>
+            </div>
+          </section>
+        )}
 
         {/* ===== Grid de mercados ===== */}
         {m && (

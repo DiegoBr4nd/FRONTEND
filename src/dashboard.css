@@ -262,3 +262,60 @@
   .sidebar-foot { margin: 0; }
   .match-title .display-lg { font-size: 32px; }
 }
+
+/* ===== Tarjeta de veredicto ===== */
+.verdict {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--sp-xl);
+  padding: var(--sp-lg) var(--sp-xl);
+  position: relative;
+  overflow: hidden;
+}
+/* Glow lateral según confianza */
+.verdict::after {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+}
+.verdict.conf-alta::after { background: var(--secondary); box-shadow: 0 0 24px var(--secondary); }
+.verdict.conf-media::after { background: var(--primary); box-shadow: 0 0 24px var(--primary); }
+.verdict.conf-baja::after { background: var(--tertiary); box-shadow: 0 0 24px var(--tertiary); }
+
+.verdict-head { display: flex; align-items: center; gap: var(--sp-md); margin-bottom: var(--sp-sm); }
+.conf-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em;
+}
+.conf-dot {
+  width: 8px; height: 8px; border-radius: var(--r-full);
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+
+.verdict-headline {
+  font-size: 19px; font-weight: 600; line-height: 1.35;
+  color: var(--on-surface); margin-bottom: var(--sp-md);
+}
+.verdict-notes { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.verdict-notes li { position: relative; padding-left: 18px; }
+.verdict-notes li::before {
+  content: '›'; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+
+.verdict-bet {
+  background: var(--surface-container-low);
+  border-radius: var(--r-md);
+  border: 1px solid var(--outline-variant);
+  padding: var(--sp-md);
+  display: flex; flex-direction: column; gap: 4px;
+  justify-content: center;
+}
+.bet-label { font-size: 17px; font-weight: 700; color: var(--on-surface); margin-top: 4px; }
+.bet-prob { font-size: 32px; line-height: 1.1; }
+.bet-reason { margin-top: 2px; }
+
+@media (max-width: 880px) {
+  .verdict { grid-template-columns: 1fr; gap: var(--sp-md); }
+}
